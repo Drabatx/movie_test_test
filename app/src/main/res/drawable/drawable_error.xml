@@ -1,0 +1,14 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fondo de color cuando la imagen no carga -->
+    <item android:drawable="@android:color/white" />
+
+    <!-- Icono de error en el centro -->
+    <item
+        android:drawable="@drawable/baseline_error_outline_24"
+        android:gravity="center"
+        android:width="48dp"
+        android:height="48dp"
+        />
+
+</layer-list>

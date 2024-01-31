@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "922411046801",
+    "project_id": "moviedbexample",
+    "storage_bucket": "moviedbexample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922411046801:android:c7cc69509d8c17aaa7ec30",
+        "android_client_info": {
+          "package_name": "com.example.moviesdbapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArZTJdKBbCHvXgcyS3n8IbMN8rAAtJu9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

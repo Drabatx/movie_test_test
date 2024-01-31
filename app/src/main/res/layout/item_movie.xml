@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="4dp"
+    style="@style/CardViewStyle"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/medium_margin">
+
+        <ImageView
+            android:id="@+id/imageMovie"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/round_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="H,2:3"
+            android:scaleType="centerCrop"/>
+
+        <!-- Nombre de la película -->
+        <TextView
+            android:id="@+id/textMovieName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Wonka (2023)"
+            android:textStyle="bold"
+            android:textSize="@dimen/font_size_title"
+            android:layout_marginHorizontal="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/medium_margin"
+            app:layout_constraintTop_toBottomOf="@id/imageMovie"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Fecha de estreno -->
+        <TextView
+            android:id="@+id/textReleaseDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="07/12/2023"
+            android:textSize="@dimen/font_size_regular"
+            android:layout_marginHorizontal="@dimen/medium_margin"
+            app:layout_constraintTop_toBottomOf="@id/textMovieName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp" />
+
+        <FrameLayout
+            android:id="@+id/contentProgress"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circular_progress_background"
+            app:layout_constraintBottom_toBottomOf="@+id/imageMovie"
+            app:layout_constraintStart_toStartOf="@+id/imageMovie">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressRating"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progress="50"
+                app:indicatorColor="?colorAccent"
+                app:indicatorSize="50dp"
+                app:trackColor="?colorPrimaryVariant"
+                app:trackThickness="4dp" />
+        </FrameLayout>
+
+        <!-- Texto dentro del ProgressBar para la calificación -->
+        <TextView
+            android:id="@+id/textRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="72%"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/contentProgress"
+            app:layout_constraintStart_toStartOf="@id/contentProgress"
+            app:layout_constraintEnd_toEndOf="@id/contentProgress"
+            app:layout_constraintBottom_toBottomOf="@id/contentProgress"
+            android:gravity="center"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

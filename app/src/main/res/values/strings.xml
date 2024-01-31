@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MoviesDbApplication</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_movies">Peliculas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_movies_fragment">Peliculas</string>
+    <string name="title_popular">Populares</string>
+    <string name="title_best_rated">Mejores Calificadas</string>
+    <string name="title_recommended">Más Recomendadas</string>
+    <string name="s_title_dialog_info">Informacion</string>
+    <string name="s_title_dialog_error">Error</string>
+    <string name="s_wait">Espere...</string>
+    <string name="title_map">Mapa</string>
+    <string name="s_review">Reseña</string>
+    <string name="s_phone">Telefono</string>
+    <string name="s_email">Email</string>
+    <string name="s_name">Nombre completo</string>
+    <string name="s_save_info">Guardar Informacion</string>
+    <string name="edit_info">Editar Informacion</string>
+    <string name="s_user_info">Informacion de Usuario</string>
+    <string name="invalidate_fields">Los campos son invalidos</string>
+</resources>

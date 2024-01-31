@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_profile_fragment">
+
+    <fragment
+        android:id="@+id/nav_profile_fragment"
+        android:name="com.example.moviesdbapplication.ui.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_moviesFragment"
+            app:destination="@id/nav_movies_fragment" />
+        <action
+            android:id="@+id/action_nav_profile_fragment_to_mapFragment"
+            app:destination="@id/nav_map_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_movies_fragment"
+        android:name="com.example.moviesdbapplication.ui.fragments.MoviesFragment"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_moviesFragment_to_profileFragment"
+            app:destination="@id/nav_profile_fragment" />
+        <action
+            android:id="@+id/action_nav_movies_fragment_to_mapFragment"
+            app:destination="@id/nav_map_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_map_fragment"
+        android:name="com.example.moviesdbapplication.ui.fragments.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_nav_profile_fragment"
+            app:destination="@id/nav_profile_fragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_nav_movies_fragment"
+            app:destination="@id/nav_movies_fragment" />
+    </fragment>
+</navigation>

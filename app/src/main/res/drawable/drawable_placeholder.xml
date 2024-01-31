@@ -1,0 +1,14 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fondo de color del placeholder -->
+    <item android:drawable="@android:color/darker_gray" />
+
+    <!-- Icono de carga en el centro -->
+    <item
+        android:drawable="@drawable/baseline_hourglass_bottom_24"
+        android:gravity="center"
+        android:width="48dp"
+        android:height="48dp"
+        />
+
+</layer-list>
