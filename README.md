@@ -4,6 +4,8 @@ Prueba técnica de Android para la aplicación Movies DB. Este proyecto implemen
 
 ## Faltantes del Proyecto
 
+- ![Screen](img/2024-01-31_02h54_01.png)
+
 ### Pantalla 1
 
 - **Guardar Comentarios:** Implementar la funcionalidad para guardar comentarios relacionados con las películas.
@@ -38,7 +40,9 @@ Además de los faltantes mencionados, hay áreas de mejora en el proyecto:
 
 - **Diseño de UI:** Mejorar la estética general de la interfaz de usuario para una experiencia más atractiva.
 
-- **Sección del mapa:** Agregar una lista para mostrar ubicaciones en el mapa y redirigir solo al elemento seleccionado. Mejorar la vista de detalles del marcador para una presentación más atractiva.
+- **Sección del mapa:** Agregar una lista para mostrar ubicaciones en el mapa y redirigir solo al elemento seleccionado. Mejorar la vista de detalles del marcador para una presentación más atractiva. Como las siguientes imagenes
+- ![Custom Marker Example](img/2024-01-31_02h48_52.png)
+
 
 - **Geolocalización:** Justificar y documentar el seguimiento de ubicación, explicando el motivo y la ejecución de servicios en segundo plano. [Proyecto donde he aplicado la geolocalizacion en background](https://www.youtube.com/shorts/N9URjBGrN6Q)
 
