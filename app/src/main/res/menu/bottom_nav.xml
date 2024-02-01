@@ -7,11 +7,18 @@
         android:icon="@drawable/baseline_person_outline_24"/>
     <item
         android:title="@string/title_movies"
-        android:id="@+id/menu_moviews"
+        android:id="@+id/menu_movies"
         android:icon="@drawable/baseline_movie_outline"/>
 
     <item
         android:title="@string/title_map"
         android:id="@+id/menu_map"
         android:icon="@drawable/baseline_map_outline"/>
+
+    <item
+        android:title="@string/title_gallery"
+        android:id="@+id/menu_gallery"
+        android:icon="@drawable/baseline_gallery"/>
+
+
 </menu>

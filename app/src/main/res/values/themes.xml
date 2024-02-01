@@ -13,9 +13,7 @@
     <style name="Theme.MoviesDbApplication" parent="Base.Theme.MoviesDbApplication" />
 
     <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
-        <!-- Personaliza el CardView según tus necesidades -->
         <item name="cardBackgroundColor">#FFFFFF</item>
         <item name="cardElevation">4dp</item>
-        <!-- Otros atributos personalizados aquí -->
     </style>
 </resources>

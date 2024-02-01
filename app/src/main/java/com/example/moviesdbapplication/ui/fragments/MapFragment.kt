@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -40,7 +41,6 @@ class MapFragment : MyBaseFragment(), OnMapReadyCallback {
 
     private val viewModel by viewModels<MapViewModel>()
 
-    private val LOCATION_PERMISSION_REQUEST_CODE = 1
     val locationPermissions = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -154,28 +154,18 @@ class MapFragment : MyBaseFragment(), OnMapReadyCallback {
         ) {
             obtainLatLon()
         } else {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                locationPermissions,
-                LOCATION_PERMISSION_REQUEST_CODE
-            )
+            requestLocationPermissionLauncher.launch(locationPermissions)
         }
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+    private var requestLocationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            if (permissions.all { it.value }) {
                 obtainLatLon()
             } else {
                 requestLocationPermissions()
             }
         }
-    }
 
     fun Location.toLatLon(): LatLng {
         return LatLng(this.latitude, this.longitude)

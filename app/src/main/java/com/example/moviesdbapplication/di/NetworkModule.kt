@@ -9,15 +9,22 @@ import com.example.moviesdbapplication.data.local.db.MovieDao
 import com.example.moviesdbapplication.data.local.db.MovieWithCategoryRelationDao
 import com.example.moviesdbapplication.data.remote.MovieApiService
 import com.example.moviesdbapplication.data.remote.RemoteDataSource
+import com.example.moviesdbapplication.data.repository.GalleryRepository
 import com.example.moviesdbapplication.data.repository.MapRepository
 import com.example.moviesdbapplication.data.repository.MoviesRepository
 import com.example.moviesdbapplication.data.repository.ProfileRepository
+import com.example.moviesdbapplication.data.repository.impl.GalleryRepositoryImpl
 import com.example.moviesdbapplication.data.repository.impl.MapRepositoryImpl
 import com.example.moviesdbapplication.data.repository.impl.MoviesRepositoryImpl
 import com.example.moviesdbapplication.data.repository.impl.ProfileRepositoryImpl
+import com.example.moviesdbapplication.di.NetworkConstants.FIRESTORAGE
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -146,5 +153,16 @@ object NetworkModule {
     @Singleton
     fun provideProfileRepository(userCollection: DocumentReference): ProfileRepository {
         return ProfileRepositoryImpl(userCollection)
+    }
+
+    @Provides
+    fun provideStorageReference(): StorageReference {
+        return FirebaseStorage.getInstance().reference
+    }
+
+    @Provides
+    @Singleton
+    fun provideGalleryRepository(storageReference: StorageReference) :GalleryRepository{
+        return GalleryRepositoryImpl(storageReference)
     }
 }

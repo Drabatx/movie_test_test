@@ -20,4 +20,6 @@
     <string name="edit_info">Editar Informacion</string>
     <string name="s_user_info">Informacion de Usuario</string>
     <string name="invalidate_fields">Los campos son invalidos</string>
+    <string name="title_gallery">Galeria</string>
+    <string name="s_add">Agregar</string>
 </resources>

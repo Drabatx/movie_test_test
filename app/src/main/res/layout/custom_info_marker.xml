@@ -10,11 +10,14 @@
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#111"
+        android:text="example"
         android:textSize="16sp"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/dateTextView"
+        android:textColor="#111"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"/>

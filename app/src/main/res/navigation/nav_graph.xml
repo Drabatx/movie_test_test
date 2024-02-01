@@ -41,4 +41,8 @@
             android:id="@+id/action_mapFragment_to_nav_movies_fragment"
             app:destination="@id/nav_movies_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_gallery_fragment"
+        android:name="com.example.moviesdbapplication.ui.fragments.GalleryFragment"
+        android:label="GalleryFragment" />
 </navigation>
