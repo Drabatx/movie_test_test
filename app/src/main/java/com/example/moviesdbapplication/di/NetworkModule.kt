@@ -2,6 +2,7 @@ package com.example.moviesdbapplication.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.moviesdbapplication.BuildConfig
 import com.example.moviesdbapplication.data.local.LocalDataSource
 import com.example.moviesdbapplication.data.local.db.AppDatabase
 import com.example.moviesdbapplication.data.local.db.CategoryDao
@@ -17,14 +18,11 @@ import com.example.moviesdbapplication.data.repository.impl.GalleryRepositoryImp
 import com.example.moviesdbapplication.data.repository.impl.MapRepositoryImpl
 import com.example.moviesdbapplication.data.repository.impl.MoviesRepositoryImpl
 import com.example.moviesdbapplication.data.repository.impl.ProfileRepositoryImpl
-import com.example.moviesdbapplication.di.NetworkConstants.FIRESTORAGE
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,15 +48,19 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
-        val loggingInterceptor = HttpLoggingInterceptor().apply {
+
+        val loggingInterceptor = if (BuildConfig.DEBUG) HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
+        } else HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.NONE
         }
+        val apiKey = BuildConfig.MOVIES_API_KEY
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .addInterceptor(Interceptor { chain ->
                 val original = chain.request()
                 val requestBuilder = original.newBuilder()
-                    .header("Authorization", "Bearer ${NetworkConstants.API_KEY}")
+                    .header("Authorization", "Bearer ${apiKey}")
                     .header("accept", "application/json")
                 val request = requestBuilder.build()
                 chain.proceed(request)
@@ -162,7 +164,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGalleryRepository(storageReference: StorageReference) :GalleryRepository{
+    fun provideGalleryRepository(storageReference: StorageReference): GalleryRepository {
         return GalleryRepositoryImpl(storageReference)
     }
 }

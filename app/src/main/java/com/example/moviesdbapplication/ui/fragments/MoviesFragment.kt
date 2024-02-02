@@ -11,7 +11,7 @@ import com.example.moviesdbapplication.R
 import com.example.moviesdbapplication.data.remote.response.MovieRemoteResponse
 import com.example.moviesdbapplication.databinding.FragmentMoviesBinding
 import com.example.moviesdbapplication.ui.MovieState
-import com.example.moviesdbapplication.ui.adapter.MovieAdapter
+import com.example.moviesdbapplication.ui.adapter.MovieListAdapter
 import com.example.moviesdbapplication.ui.viewmodels.MoviesViewModel
 import com.example.moviesdbapplication.util.Result
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +26,7 @@ class MoviesFragment : MyBaseFragment() {
 
     private val viewModel by viewModels<MoviesViewModel>()
 
-    private lateinit var adapter: MovieAdapter
+    private lateinit var adapter: MovieListAdapter
 
     var currentList = MovieState.POPULAR
     override fun onCreateView(
@@ -73,7 +73,7 @@ class MoviesFragment : MyBaseFragment() {
                 hideLoading()
                 result.data.results?.let { movies ->
                     lifecycleScope.launch(Dispatchers.Main) {
-                        adapter.updateMovies(movies)
+                        adapter.submitList(movies)
                     }
                 }
             }
@@ -91,7 +91,7 @@ class MoviesFragment : MyBaseFragment() {
     }
 
     fun initRecyclerView() {
-        adapter = MovieAdapter(listOf())
+        adapter = MovieListAdapter()
         bindig.recyclerViewMovies.adapter = adapter
         bindig.recyclerViewMovies.layoutManager = GridLayoutManager(requireContext(), 2)
     }

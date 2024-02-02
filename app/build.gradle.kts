@@ -3,9 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
-    id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("com.google.gms.google-services")
-
 }
 
 android {
@@ -20,6 +19,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+//        val localProperties = Properties()
+//        localProperties.load(rootProject.file("local.properties").inputStream())
+
+//        buildConfigField("String", "MOVIES_API_KEY", "\"${properties["MOVIES_API_KEY"]}\"")
+
+
     }
 
     buildTypes {
@@ -29,12 +35,14 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
     }
     buildFeatures{
         viewBinding {
             enable = true
         }
+        buildConfig = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -95,6 +103,9 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-storage")
+
+    implementation("androidx.core:core-splashscreen:1.0.0")
+
 }
 
 kapt {
