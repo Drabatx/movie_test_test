@@ -7,7 +7,7 @@ import com.example.moviesdbapplication.data.model.CategoryEntity
 import com.example.moviesdbapplication.data.model.MovieCategoryRelationEntity
 import com.example.moviesdbapplication.data.model.MovieEntity
 import com.example.moviesdbapplication.domain.model.Movie
-import com.example.moviesdbapplication.ui.MovieState
+import com.example.moviesdbapplication.presentation.MovieState
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(

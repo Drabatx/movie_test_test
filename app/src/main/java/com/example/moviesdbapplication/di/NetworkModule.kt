@@ -10,14 +10,16 @@ import com.example.moviesdbapplication.data.local.db.MovieDao
 import com.example.moviesdbapplication.data.local.db.MovieWithCategoryRelationDao
 import com.example.moviesdbapplication.data.remote.MovieApiService
 import com.example.moviesdbapplication.data.remote.RemoteDataSource
-import com.example.moviesdbapplication.data.repository.GalleryRepository
-import com.example.moviesdbapplication.data.repository.MapRepository
-import com.example.moviesdbapplication.data.repository.MoviesRepository
-import com.example.moviesdbapplication.data.repository.ProfileRepository
-import com.example.moviesdbapplication.data.repository.impl.GalleryRepositoryImpl
-import com.example.moviesdbapplication.data.repository.impl.MapRepositoryImpl
-import com.example.moviesdbapplication.data.repository.impl.MoviesRepositoryImpl
-import com.example.moviesdbapplication.data.repository.impl.ProfileRepositoryImpl
+import com.example.moviesdbapplication.data.repository.FirebaseRepository
+import com.example.moviesdbapplication.data.repository.FirebaseRepositoryImpl
+import com.example.moviesdbapplication.domain.repository.GalleryRepository
+import com.example.moviesdbapplication.domain.repository.MapRepository
+import com.example.moviesdbapplication.domain.repository.MoviesRepository
+import com.example.moviesdbapplication.domain.repository.ProfileRepository
+import com.example.moviesdbapplication.domain.repository.impl.GalleryRepositoryImpl
+import com.example.moviesdbapplication.domain.repository.impl.MapRepositoryImpl
+import com.example.moviesdbapplication.domain.repository.impl.MoviesRepositoryImpl
+import com.example.moviesdbapplication.domain.repository.impl.ProfileRepositoryImpl
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -161,10 +163,17 @@ object NetworkModule {
     fun provideStorageReference(): StorageReference {
         return FirebaseStorage.getInstance().reference
     }
-
+    @Provides
+    fun provideStorageStorage(): FirebaseStorage {
+        return FirebaseStorage.getInstance()
+    }
+    @Provides
+    fun provideFirebaseRepository(storageReference: FirebaseStorage): FirebaseRepository {
+        return FirebaseRepositoryImpl(storageReference)
+    }
     @Provides
     @Singleton
-    fun provideGalleryRepository(storageReference: StorageReference): GalleryRepository {
-        return GalleryRepositoryImpl(storageReference)
+    fun provideGalleryRepository(firebaseRepository: FirebaseRepository): GalleryRepository {
+        return GalleryRepositoryImpl(firebaseRepository)
     }
 }
